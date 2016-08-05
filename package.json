@@ -7,7 +7,9 @@
     "compile": "babel -d lib/ src/",
     "buildDoc": "jsdoc -c jsdoc.json",
     "flow": "flow; test $? -eq 0 -o $? -eq 2",
-    "test": "jest"
+    "jest": "jest",
+    "test": "npm run flow && npm run compile && npm run jest",
+    "deploy": "npm run test && npm run buildDoc"
   },
   "repository": {
     "type": "git",
