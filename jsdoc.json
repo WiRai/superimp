@@ -1,0 +1,25 @@
+{
+    "tags": {
+        "allowUnknownTags": true,
+        "dictionaries": ["jsdoc","closure"]
+    },
+    "source": {
+        "include": ["src"],
+        "includePattern": ".+\\.js(doc)?$",
+        "excludePattern": "(^|\\/|\\\\)_"
+    },
+    "plugins": ["node_modules/jsdoc-babel"],
+    "babel": {
+      "plugins": ["transform-flow-strip-types", "transform-class-properties"]
+    },
+    "templates": {
+        "cleverLinks": true,
+        "monospaceLinks": true
+    },
+    "opts": {
+        "template": "templates/default",
+        "encoding": "utf8",
+        "destination": "./doc/",
+        "recurse": true
+    }
+}
