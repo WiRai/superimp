@@ -1,1 +1,1 @@
-exports.introduce = require('./lib/composer').introduce;
+exports.Composer = require('./lib/composer');
