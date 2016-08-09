@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "compile": "babel -d lib/ src/;",
-    "buildDoc": "jsdoc -c jsdoc.json;",
+    "compile": "rm -rf lib/*; babel -d lib/ src/;",
+    "buildDoc": "rm -rf doc/*; jsdoc -c jsdoc.json;",
     "flow": "flow; test $? -eq 0 -o $? -eq 2;",
     "jest": "jest;",
     "test": "npm run flow && npm run compile && npm run jest;",

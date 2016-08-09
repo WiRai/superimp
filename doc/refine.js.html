@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: refine.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,34 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: refine.js</h1>
 
     
 
 
 
     
-
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>const CompositionError = require('./CompositionError');
+/**
+ * @function refine
+ * @description Refine element.
+ * @param {Object} obj - Object to be changed.
+ * @param {string} name - Name of the key of the value to be changed.
+ * @param {any} implementation - The new implementation.
+ * @returns {Object} Object with refined property.
+ */
+module.exports = function refine(obj: Object, name: string, implementation: any): Object {
+  if (!obj[name]) {
+    throw new Composer.CompositionError(`Cannot refine ${name}, is not introduced yet!`);
+  }
+  obj[name] = implementation(obj[name]);
+  return obj;
+};
+</code></pre>
+        </article>
+    </section>
 
 
 

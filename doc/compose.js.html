@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: compose.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,35 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: compose.js</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>const composePair = require('./composePair');
 
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+/**
+ * @function compose
+ * @description Compose multiple objects, right associative..
+ * @param {Array} args - Array containing objects to compose.
+ * @returns {Object} Composed object.
+ */
+module.exports = function compose(...args: Array&lt;any>): Object {
+  if (args.length === 2) {
+    return composePair(args[0], args[1]);
+  }
+  return compose(
+    ...args.splice(0, args.length - 2),
+    composePair(...args)
+  );
+};
+</code></pre>
+        </article>
+    </section>
 
 
 
