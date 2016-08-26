@@ -7,6 +7,9 @@ const composePair = require('./composePair');
  * @returns {Object} Composed object.
  */
 module.exports = function compose(...args: Array<any>): Object {
+  if (args.length === 1) {
+    return args[0];
+  }
   if (args.length === 2) {
     return composePair(args[0], args[1]);
   }
