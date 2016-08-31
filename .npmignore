@@ -1,0 +1,8 @@
+src
+doc
+.npmignore
+.babelrc
+.eslintrc
+.flowconfig
+jsdoc.json
+__tests__
