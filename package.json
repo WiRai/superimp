@@ -1,7 +1,7 @@
 {
   "name": "superimp",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.0.1",
+  "description": "A simple composer for javascript objects",
   "main": "index.js",
   "scripts": {
     "compile": "rm -rf lib/*; babel -d lib/ src/;",
@@ -13,10 +13,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://gitlab.youtranslate.net/packages/superimp.git"
+    "url": "https://github.com/WiRai/superimp.git"
   },
-  "author": "",
-  "license": "",
+  "author": "WiRai",
+  "license": "MIT",
   "devDependencies": {
     "babel-cli": "^6.7.7",
     "babel-eslint": "^6.0.2",
