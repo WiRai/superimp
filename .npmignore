@@ -6,3 +6,4 @@ doc
 .flowconfig
 jsdoc.json
 __tests__
+.travis.yml
