@@ -6,10 +6,10 @@
   "scripts": {
     "compile": "rm -rf lib/*; babel -d lib/ src/;",
     "buildDoc": "rm -rf doc/*; jsdoc -c jsdoc.json;",
+    "deploy": "npm run test && npm run buildDoc;",
     "flow": "flow; test $? -eq 0 -o $? -eq 2;",
     "jest": "jest;",
-    "test": "npm run flow && npm run compile && npm run jest;",
-    "deploy": "npm run test && npm run buildDoc;"
+    "test": "npm run flow && npm run compile && npm run jest && codecov"
   },
   "repository": {
     "type": "git",
@@ -24,6 +24,7 @@
     "babel-plugin-transform-flow-strip-types": "^6.14.0",
     "babel-polyfill": "^6.13.0",
     "babel-preset-es2015": "^6.14.0",
+    "codecov": "^1.0.1",
     "eslint": "^3.4.0",
     "eslint-config-airbnb": "^11.0.0",
     "eslint-loader": "^1.5.0",
@@ -36,5 +37,9 @@
     "jest-cli": "^15.1.1",
     "jsdoc": "^3.4.1",
     "jsdoc-babel": "^0.2.1"
+  },
+  "jest": {
+    "coverageDirectory": "./coverage/",
+    "collectCoverage": true
   }
 }
