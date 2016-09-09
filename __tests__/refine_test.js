@@ -8,6 +8,11 @@ describe('refine', () => {
     };
     refine(obj, 'foo', (original) => `${original}baz`);
     refine(obj, 'coolFunction', (original) => (x, y) => original(x + y) + 1);
+    try {
+      refine(obj, 'notThere', () => 5);
+    } catch (e) {
+      expect(e.message).toBe('Cannot refine notThere, is not introduced yet!');
+    }
     expect(obj.foo).toBe('barbaz');
     expect(obj.coolFunction(1, 1)).toBe(5);
   });
