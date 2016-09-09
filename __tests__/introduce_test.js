@@ -1,5 +1,3 @@
-jest.unmock('../lib/introduce');
-
 const introduce = require('../lib/introduce');
 
 describe('introduce', () => {

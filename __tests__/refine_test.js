@@ -1,5 +1,3 @@
-jest.unmock('../lib/refine');
-
 const refine = require('../lib/refine');
 
 describe('refine', () => {

@@ -1,8 +1,3 @@
-jest.unmock('../lib/introduce');
-jest.unmock('../lib/refine');
-jest.unmock('../lib/composePair');
-jest.unmock('../lib/compose');
-
 const compose = require('../lib/compose');
 
 describe('compose', () => {
