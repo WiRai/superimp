@@ -9,7 +9,7 @@ const CompositionError = require('./CompositionError');
  */
 module.exports = function refine(obj: Object, name: string, implementation: any): Object {
   if (!obj[name]) {
-    throw new Composer.CompositionError(`Cannot refine ${name}, is not introduced yet!`);
+    throw new CompositionError(`Cannot refine ${name}, is not introduced yet!`);
   }
   obj[name] = implementation(obj[name]);
   return obj;
