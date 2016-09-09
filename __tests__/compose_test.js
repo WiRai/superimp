@@ -22,6 +22,7 @@ describe('compose', () => {
       refine_yeah: (original) => `oh ${original}`,
     };
     compose(patchObj3, patchObj2, patchObj, obj);
+    compose(obj);
     expect(obj.yeah).toBe('oh yeah');
     expect(obj.foo).toBe('barbazbang');
     expect(obj.coolFunction(1, 1)).toBe(3);

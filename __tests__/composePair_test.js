@@ -5,6 +5,7 @@ describe('composePair', () => {
     const obj = {
       foo: 'bar',
       coolFunction: (x) => 2 * x,
+      notThere: 4,
     };
     const patchObj = {
       refine_foo: (original) => `${original}bang`,
