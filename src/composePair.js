@@ -22,7 +22,7 @@ module.exports = function composePair(obj: Object, base: Object): Object {
       name = key.substr(6);
       if (
         base[name] == null ||
-        (typeof(base[name]) !== 'function' && typeof(base[name]) !== 'object')
+        (typeof (base[name]) !== 'function' && typeof (base[name]) !== 'object')
       ) {
         throw new CompositionError(`Cannot compose, ${name} is primitive.`);
       } else {
