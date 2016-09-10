@@ -1,6 +1,6 @@
 {
   "name": "superimp",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "A simple composer for javascript objects",
   "main": "index.js",
   "scripts": {
@@ -35,7 +35,7 @@
     "eslint-plugin-react": "^6.2.0",
     "flow-bin": "^0.32.0",
     "jest-cli": "^15.1.1",
-    "jsdoc": "^3.4.1",
+    "jsdoc": "3.4.0",
     "jsdoc-babel": "^0.2.1"
   },
   "jest": {
