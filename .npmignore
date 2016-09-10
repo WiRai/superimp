@@ -8,3 +8,6 @@ doc
 jsdoc.json
 __tests__
 .travis.yml
+.codeclimate
+.csslintrc
+.eslintignore
