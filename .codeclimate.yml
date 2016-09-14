@@ -19,4 +19,4 @@ exclude_paths:
 - doc/
 - lib/
 - node_modules/
-- __tests__/
+- src/**/*.test.js
