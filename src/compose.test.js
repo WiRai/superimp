@@ -1,4 +1,5 @@
 const compose = require('../lib/compose');
+const expect = require('chai').expect;
 
 describe('compose', () => {
   it('Composes multiple objects', () => {
@@ -23,10 +24,10 @@ describe('compose', () => {
     };
     compose(patchObj3, patchObj2, patchObj, obj);
     compose(obj);
-    expect(obj.yeah).toBe('oh yeah');
-    expect(obj.foo).toBe('barbazbang');
-    expect(obj.coolFunction(1, 1)).toBe(3);
-    expect(obj.coolFunction.bar).toBe('muh');
-    expect(obj.coolFunction.toString()).toBe('harhar');
+    expect(obj.yeah === 'oh yeah').to.be.true;
+    expect(obj.foo === 'barbazbang').to.be.true;
+    expect(obj.coolFunction(1, 1) === 3).to.be.true;
+    expect(obj.coolFunction.bar === 'muh').to.be.true;
+    expect(obj.coolFunction.toString() === 'harhar').to.be.true;
   });
 });

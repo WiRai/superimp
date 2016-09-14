@@ -1,4 +1,5 @@
 const introduce = require('../lib/introduce');
+const expect = require('chai').expect;
 
 describe('introduce', () => {
   it('Introduces new elements to object', () => {
@@ -9,9 +10,9 @@ describe('introduce', () => {
     try {
       introduce(obj, 'foo', 5);
     } catch (e) {
-      expect(e.message).toBe('Cannot introduce foo, is already there!');
+      expect(e.message === 'Cannot introduce foo, is already there!').to.be.true;
     }
-    expect(obj.coolFunction(2)).toBe(4);
-    expect(obj.foo).toBe('bar');
+    expect(obj.coolFunction(2) === 4).to.be.true;
+    expect(obj.foo === 'bar').to.be.true;
   });
 });

@@ -1,4 +1,5 @@
 const composePair = require('../lib/composePair');
+const expect = require('chai').expect;
 
 describe('composePair', () => {
   it('Composes two objects', () => {
@@ -24,11 +25,11 @@ describe('composePair', () => {
     try {
       composePair(patchObj2, obj);
     } catch (e) {
-      expect(e.message).toBe('Cannot compose, notThere is primitive.');
+      expect(e.message === 'Cannot compose, notThere is primitive.').to.be.true;
     }
-    expect(obj.foo).toBe('barbang');
-    expect(obj.coolFunction(2)).toBe(3);
-    expect(obj.coolFunction.bar).toBe('muh');
-    expect(obj.coolFunction.toString()).toBe('harhar');
+    expect(obj.foo === 'barbang').to.be.true;
+    expect(obj.coolFunction(2) === 3).to.be.true;
+    expect(obj.coolFunction.bar === 'muh').to.be.true;
+    expect(obj.coolFunction.toString() === 'harhar').to.be.true;
   });
 });
