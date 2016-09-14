@@ -1,2 +1,5 @@
 node_modules
 npm-debug.log
+#Until babel fixes ignore directive:
+lib/**/*.test.js
+.nyc_output
