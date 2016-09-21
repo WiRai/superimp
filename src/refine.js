@@ -8,7 +8,7 @@ const CompositionError = require('./CompositionError');
  * @returns {Object} Object with refined property.
  */
 module.exports = function refine(obj: Object, name: string, implementation: any): Object {
-  if (!obj[name]) {
+  if (!(name in obj)) {
     throw new CompositionError(`Cannot refine ${name}, is not introduced yet!`);
   }
   obj[name] = implementation(obj[name]);
