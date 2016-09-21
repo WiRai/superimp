@@ -8,7 +8,7 @@ const CompositionError = require('./CompositionError');
  * @returns {Object} Object with inroduced property.
  */
 module.exports = function introduce(obj: Object, name: string, implementation: any): Object {
-  if (obj[name]) {
+  if (name in obj) {
     throw new CompositionError(`Cannot introduce ${name}, is already there!`);
   }
   obj[name] = implementation;
