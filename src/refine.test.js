@@ -6,7 +6,9 @@ describe('refine', () => {
     const obj = {
       foo: 'bar',
       coolFunction: (x) => 2 * x,
+      falseVar: false,
     };
+    refine(obj, 'falseVar', (original) => true);
     refine(obj, 'foo', (original) => `${original}baz`);
     refine(obj, 'coolFunction', (original) => (x, y) => original(x + y) + 1);
     try {
@@ -16,5 +18,6 @@ describe('refine', () => {
     }
     expect(obj.foo === 'barbaz').to.be.true;
     expect(obj.coolFunction(1, 1) === 5).to.be.true;
+    expect(obj.falseVar).to.be.true;
   });
 });
