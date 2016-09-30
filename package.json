@@ -4,14 +4,15 @@
   "description": "A simple composer for javascript objects",
   "main": "index.js",
   "scripts": {
-    "compile": "rm -rf lib/*; babel -d lib/ src/;",
     "buildDoc": "rm -rf doc/*; jsdoc -c jsdoc.json;",
-    "coverage": "nyc --reporter=lcov npm run mocha",
+    "compile": "rm -rf lib/*; babel -d lib/ src/;",
+    "coverage": "nyc --reporter=lcov npm run mocha;",
     "deploy": "npm run test && npm run buildDoc;",
-    "dev": "watchman-make --make='npm run' -p src -t compile -p lib -t mocha -p src -t flow",
+    "dev": "watchman-make --make='npm run' -p src -t compile -p lib -t mocha -p src -t flow -p src -t lint;",
     "flow": "flow; test $? -eq 0 -o $? -eq 2;",
-    "mocha": "mocha --opts ./mocha.opts",
-    "test": "npm run flow && npm run compile && npm run coverage && codecov"
+    "lint": "eslint src;",
+    "mocha": "mocha --opts ./mocha.opts;",
+    "test": "npm run flow && npm run compile && npm run coverage && codecov;"
   },
   "repository": {
     "type": "git",
@@ -34,7 +35,6 @@
     "eslint-plugin-import": "^2.0.0",
     "eslint-plugin-jsdoc": "^2.3.1",
     "eslint-plugin-jsx-a11y": "^2.2.2",
-    "eslint-plugin-react": "^6.3.0",
     "flow-bin": "^0.33.0",
     "jsdoc": "3.4.0",
     "jsdoc-babel": "^0.2.1",
