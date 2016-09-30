@@ -4,11 +4,9 @@
     "flowtype",
     "jsdoc"
   ],
-  "env": {
-    "jest": true
-  },
   "extends": "airbnb",
   "rules": {
+    "arrow-parens": 0,
     "flowtype/define-flow-type": 1,
     "flowtype/require-parameter-type": 1,
     "flowtype/require-return-type": [
