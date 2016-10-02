@@ -1,6 +1,6 @@
 {
   "name": "superimp",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A simple composer for javascript objects",
   "main": "index.js",
   "scripts": {
@@ -32,9 +32,10 @@
     "eslint-config-airbnb": "^12.0.0",
     "eslint-loader": "^1.5.0",
     "eslint-plugin-flowtype": "^2.19.0",
-    "eslint-plugin-import": "^2.0.0",
+    "eslint-plugin-import": "^1.16.0",
     "eslint-plugin-jsdoc": "^2.3.1",
     "eslint-plugin-jsx-a11y": "^2.2.2",
+    "eslint-plugin-react": "^6.3.0",
     "flow-bin": "^0.33.0",
     "jsdoc": "3.4.0",
     "jsdoc-babel": "^0.2.1",
