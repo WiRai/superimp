@@ -1,20 +1,20 @@
+/* @flow */
+
 const composePair = require('./composePair');
 
 /**
  * @function compose
  * @description Compose multiple objects, right associative..
- * @param {Array} args - Array containing objects to compose.
+ * @param {boolean} cleanUp - Tells compose to remove composed stuff from given objects.
+ * @param {...Object} rest - Objects to compose.
  * @returns {Object} Composed object.
  */
-module.exports = function compose(...args: Array<any>): Object {
-  if (args.length === 1) {
-    return args[0];
-  }
-  if (args.length === 2) {
-    return composePair(args[0], args[1]);
-  }
-  return compose(
-    ...args.splice(0, args.length - 2),
-    composePair(...args)
+module.exports = function compose(cleanUp: boolean, ...rest: Array<any>): Object {
+  const base = rest[rest.length - 1];
+  const arr = rest.slice().reverse().slice(1);
+  // eslint-disable-next-line no-param-reassign
+  return arr.reduce(
+    (prevVal: Object, currentVal: Object): Object => composePair(currentVal, prevVal, cleanUp),
+    base
   );
 };
