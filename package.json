@@ -1,6 +1,6 @@
 {
   "name": "superimp",
-  "version": "1.0.4",
+  "version": "2.0.0",
   "description": "A simple composer for javascript objects",
   "main": "index.js",
   "scripts": {
@@ -12,7 +12,7 @@
     "flow": "flow; test $? -eq 0 -o $? -eq 2;",
     "lint": "eslint src;",
     "mocha": "mocha --opts ./mocha.opts;",
-    "test": "npm run flow && npm run compile && npm run coverage && codecov;"
+    "test": "npm run lint && npm run flow && npm run compile && npm run coverage && codecov;"
   },
   "repository": {
     "type": "git",
