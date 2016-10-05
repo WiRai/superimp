@@ -5,6 +5,9 @@
     "jsdoc"
   ],
   "extends": "airbnb",
+  "env": {
+    "mocha": true
+  },
   "rules": {
     "arrow-parens": 0,
     "flowtype/define-flow-type": 1,
