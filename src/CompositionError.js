@@ -1,3 +1,5 @@
+/* @flow */
+
 /** Class representing a CompositionError. */
 class CompositionError extends Error {
   /**

@@ -1,3 +1,5 @@
+/* @flow */
+
 const CompositionError = require('./CompositionError');
 /**
  * @function refine
@@ -11,6 +13,7 @@ module.exports = function refine(obj: Object, name: string, implementation: any)
   if (!(name in obj)) {
     throw new CompositionError(`Cannot refine ${name}, is not introduced yet!`);
   }
+  // eslint-disable-next-line no-param-reassign
   obj[name] = implementation(obj[name]);
   return obj;
 };

@@ -1,3 +1,5 @@
+/* @flow */
+
 const CompositionError = require('./CompositionError');
 /**
  * @function introduce
@@ -11,6 +13,7 @@ module.exports = function introduce(obj: Object, name: string, implementation: a
   if (name in obj) {
     throw new CompositionError(`Cannot introduce ${name}, is already there!`);
   }
+  // eslint-disable-next-line no-param-reassign
   obj[name] = implementation;
   return obj;
 };
