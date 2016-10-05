@@ -20,14 +20,14 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">95.24% </span>
+        <span class="strong">95.83% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>20/21</span>
+        <span class='fraction'>23/24</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">58.33% </span>
+        <span class="strong">64.52% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>14/24</span>
+        <span class='fraction'>20/31</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">75% </span>
@@ -37,7 +37,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>19/19</span>
+        <span class='fraction'>22/22</span>
       </div>
     </div>
   </div>
@@ -77,13 +77,24 @@
 32
 33
 34
-35</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -97,14 +108,23 @@
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">14x</span>
 <span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -113,7 +133,7 @@
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">'use strict';
 &nbsp;
-v</span>ar _typeof = typeof Symbol === "function" &amp;&amp; typeof Symbol.iterator === "symbol" ? function (obj) { <span class="branch-0 cbranch-no" title="branch not covered" >return typeof </span>obj; } : <span class="fstat-no" title="function not covered" ><span class="branch-1 cbranch-no" title="branch not covered" >function (</span>obj) { <span class="cstat-no" title="statement not covered" >return obj &amp;&amp; typeof Symbol === "function" &amp;&amp; obj.constructor === Symbol ? "symbol" : typeof obj; };</span>
+v</span>ar _typeof = typeof Symbol === "function" &amp;&amp; typeof Symbol.iterator === "symbol" ? function (obj) { <span class="branch-0 cbranch-no" title="branch not covered" >return typeof </span>obj; } : <span class="fstat-no" title="function not covered" ><span class="branch-1 cbranch-no" title="branch not covered" >function (</span>obj) { <span class="cstat-no" title="statement not covered" >return obj &amp;&amp; typeof Symbol === "function" &amp;&amp; obj.constructor === Symbol &amp;&amp; obj !== Symbol.prototype ? "symbol" : typeof obj; };</span>
 &nbsp;
 var introduce = require('./introduce');
 var refine = require('./refine');
@@ -124,23 +144,33 @@ var CompositionError = require('./CompositionError');
  * @description Compose two objects.
  * @param {Object} obj - Object which will be composed on base.
  * @param {Object} base - Object that will be changed.
+ * @param {boolean} cleanUp - Tells composePair to remove composed stuff from given objects.
  * @returns {Object} Composed object.
  */
-module.exports = function composePair(obj, base) {
+module.exports = function composePair(obj, base, cleanUp) {
   var name = void 0;
   Object.keys(obj).forEach(function (key) {
     if (key.startsWith('introduce_')) {
       name = key.substr(10);
+      // eslint-disable-next-line no-param-reassign
       base = introduce(base, name, obj[key]);
+      // eslint-disable-next-line no-unused-expressions, no-param-reassign
+      cleanUp &amp;&amp; delete obj[key];
     } else if (key.startsWith('refine_')) {
       name = key.substr(7);
+      // eslint-disable-next-line no-param-reassign
       base = refine(base, name, obj[key]);
+      // eslint-disable-next-line no-unused-expressions, no-param-reassign
+      cleanUp &amp;&amp; delete obj[key];
     } else <span class="missing-if-branch" title="else path not taken" >E</span>if (key.startsWith('child_')) {
       name = key.substr(6);
       if (base[name] == null || typeof base[name] !== 'function' &amp;&amp; _typeof(base[name]) !== 'object') {
         throw new CompositionError('Cannot compose, ' + name + ' is primitive.');
       } else {
+        // eslint-disable-next-line no-param-reassign
         base[name] = composePair(obj[key], base[name]);
+        // eslint-disable-next-line no-unused-expressions, no-param-reassign
+        cleanUp &amp;&amp; delete obj[key];
       }
     }
   });
@@ -151,7 +181,7 @@ module.exports = function composePair(obj, base) {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Sep 21 2016 19:10:46 GMT+0200 (CEST)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Oct 05 2016 20:16:59 GMT+0200 (CEST)
 </div>
 </div>
 <script src="prettify.js"></script>
