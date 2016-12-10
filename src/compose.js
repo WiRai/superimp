@@ -15,6 +15,6 @@ module.exports = function compose(cleanUp: boolean, ...rest: Array<any>): Object
   // eslint-disable-next-line no-param-reassign
   return arr.reduce(
     (prevVal: Object, currentVal: Object): Object => composePair(currentVal, prevVal, cleanUp),
-    base
+    base,
   );
 };

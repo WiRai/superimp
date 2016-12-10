@@ -16,7 +16,7 @@ describe('compose', () => {
       refine_foo: (original: string): string => `${original}baz`,
       refine_coolFunction: (original: Function): Function => (
         x: number,
-        y: number
+        y: number,
       ): number => (original(x + y) - 1),
       child_coolFunction: {
         introduce_bar: 'muh',
