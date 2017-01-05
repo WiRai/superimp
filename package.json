@@ -1,6 +1,6 @@
 {
   "name": "superimp",
-  "version": "2.0.1",
+  "version": "3.0.0",
   "description": "A simple composer for javascript objects",
   "main": "index.js",
   "scripts": {
