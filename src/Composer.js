@@ -25,8 +25,12 @@ class Composer {
    * @returns {Object} Composition result.
    */
   compose(): Object {
-    for (let i = 0; i < this.featuresToCompose.length; i += 1) {
+    // needed because this.featuresToCompose gets consumed
+    const numberOfFeaturesToCompose = this.featuresToCompose.length;
+    for (let i = 0; i < numberOfFeaturesToCompose; i += 1) {
       this.composeFirstFeatureOnBaseFeature();
+      // remove first feature from list
+      this.featuresToCompose.shift();
     }
     return this.baseFeature;
   }
@@ -45,8 +49,6 @@ class Composer {
         this.composeChilds(key);
       }
     });
-    // remove first feature from list
-    this.featuresToCompose.slice(1);
   }
 
   /**

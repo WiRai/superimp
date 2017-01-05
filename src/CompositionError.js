@@ -10,7 +10,7 @@ class CompositionError extends Error {
    * @param {message} message - The message shown in the stacktrace.
    */
   constructor(message: string) {
-    super();
+    super(message);
     this.message = message;
   }
 }
